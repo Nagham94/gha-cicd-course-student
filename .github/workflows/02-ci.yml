@@ -16,10 +16,10 @@ on:
     - cron: "0 9 * * *"
   # CI Trigger on Pull Requests
   pull_request:
-  types:
-    - opened
-    - reopened
-    - synchronize
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   prepare-matrix:
