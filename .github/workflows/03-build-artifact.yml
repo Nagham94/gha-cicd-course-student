@@ -52,7 +52,7 @@ jobs:
       - name: Check out repository
         # Get the repository files onto the runner.
         uses: actions/checkout@v6
-        
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -71,6 +71,24 @@ jobs:
           context: .
           tags: ${{ env.IMAGE_NAME }}:${{ steps.image-tag.outputs.image_tag }}
           outputs: type=docker,dest=${{ env.IMAGE_TAR }}
+
+      - name: Load Docker image
+        run: |
+          docker load -i "${IMAGE_TAR}"
+
+      - name: Run Trivy Image Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:${{ steps.image-tag.outputs.image_tag }}
+          format: sarif
+          output: trivy-results-${{ matrix.python-version }}.sarif
+
+      - name: Upload Trivy Scan Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-scan-report-py${{ matrix.python-version }}
+          path: trivy-results-${{ matrix.python-version }}.sarif
+          retention-days: 7
 
       - name: Save image metadata
         # Keep the exact built image reference alongside the tar file.
