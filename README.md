@@ -151,8 +151,8 @@ Open these files in order:
 5. [Configure Docker Hub, SSH, and GitHub Secrets](docs/assessment/03-configure-secrets-and-ssh.md)
 6. [How the Current Labs Prepare You](docs/assessment/04-how-current-labs-prepare-you.md)
 7. [LAB-07: Final Assessment Setup and Validation Prep](labs/LAB-07-docker-hub-vm-deploy.md)
-8. [EX-11: Final Deployment Assessment](exercises/EX-11-final-deployment-assessment.md)
-9. [Assessment Success Criteria and Rubric](docs/assessment/05-success-criteria-and-rubric.md)
+8. [Assessment Success Criteria, Validation, and Rubric](docs/assessment/05-success-criteria-and-rubric.md)
+9. [EX-11: Final Deployment Assessment](exercises/EX-11-final-deployment-assessment.md)
 
 `LAB-07` uses one preloaded readiness workflow to check the setup.
 
@@ -170,10 +170,14 @@ The early course flow stays browser-first.
 
 You do not need the assessment VM setup script before Day 1 or the early labs.
 
+The later assessment path does require a local shell because you will use commands such as `scp`, `ssh`, and the local validation helper.
+
+If you do not already have the repository on your machine by then, get a local copy first before you start the VM setup steps.
+
 When the assessment path starts, use:
 
 - [Prepare the Assessment VM](docs/setup/04-prepare-assessment-vm.md)
-- `scripts/install-assessment-deps.sh`
+- [scripts/install-assessment-deps.sh](scripts/install-assessment-deps.sh)
 
 ## Optional Next Steps
 

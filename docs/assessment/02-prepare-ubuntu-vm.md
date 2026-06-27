@@ -64,6 +64,22 @@ The main script installs or checks the common VM dependencies used in this path:
 - common networking tools
 - firewall and port `8000` checks
 
+## Local Shell Reminder
+
+This later assessment path is no longer browser-only.
+
+You now need:
+
+- a local shell on your own machine
+- `scp` and `ssh` available locally
+- a local copy of the repository, or at least the assessment script files copied out of it
+
+If you do not already have the repository on your machine, return to:
+
+- [Prepare the Assessment VM](../setup/04-prepare-assessment-vm.md)
+
+and use the simplest local-copy option there first.
+
 ## One Practical Way to Use the Script
 
 From your repository on your machine, copy the main script to the VM:
@@ -147,6 +163,7 @@ If the VM still fails readiness checks after the script:
 When this page is done, continue with:
 
 - [Configure Docker Hub, SSH, and GitHub Secrets](03-configure-secrets-and-ssh.md)
+- [Assessment Success Criteria, Validation, and Rubric](05-success-criteria-and-rubric.md)
 
 If you want the full script details again, return to:
 

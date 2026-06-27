@@ -1,4 +1,4 @@
-# Assessment Success Criteria and Rubric
+# Assessment Success Criteria, Validation, and Rubric
 
 ## Purpose
 
@@ -7,8 +7,24 @@ This page gives clear and observable checks for the final assessment.
 Use it as the final reference for:
 
 - what success looks like
+- what should already be ready before `EX-11`
+- what command to run after deployment
 - what should be visible in the workflow
 - what should be visible in the deployed app
+
+## Before You Start EX-11
+
+Confirm all of these are already true:
+
+- you completed `LAB-05`
+- you completed `LAB-07`
+- you have a local shell on your own machine for `scp`, `ssh`, and local validation commands
+- you have a local copy of this repository, or at least the assessment script files available locally
+- your Ubuntu VM accepts SSH key login
+- port `8000` is reachable on the VM
+- Docker works on the VM
+- your public Docker Hub repository `tiny-health-app` exists
+- all five required GitHub secrets are saved
 
 ## Core Success Categories
 
@@ -33,8 +49,8 @@ Use it as the final reference for:
 ### 4. Running Application Checks
 
 - `/health` responds successfully
-- `/version` responds with build details
-- `/status` responds with runtime visibility such as hostname, environment, or image tag
+- `/version` responds with build details such as `app_version`, `commit_sha`, and `image_tag`
+- `/status` responds with runtime visibility such as `app_version`, `commit_sha`, `image_tag`, `environment`, and `deployment_mode`
 
 ### 5. Explanation
 
@@ -72,3 +88,31 @@ When you or your instructor review the result, these are the clearest things to 
 - the image reference shown in the workflow logs
 - the running app responses from `/health`, `/version`, and `/status`
 - one clear explanation of what exact thing is now running on the VM
+
+## Final Validation Command
+
+After the workflow succeeds, run this from your repository root on your own machine:
+
+```bash
+bash scripts/assessment/validate-deployment.sh http://<vm-host>:8000
+```
+
+Replace `<vm-host>` with the same public host value you saved in `VM_HOST`.
+
+That validation script checks:
+
+- `/health`
+- `/version`
+- `/status`
+- the required JSON fields used in this assessment path
+
+## Final Self-Check
+
+You are done when all of these are true:
+
+- the workflow passes end to end
+- the deployed app responds on port `8000`
+- the validation command passes
+- you can explain what exact image was deployed
+- you can explain why the flow is repeatable
+- you can explain how the final workflow still follows `code -> verify -> package -> deliver`

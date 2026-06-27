@@ -31,6 +31,7 @@ This workflow keeps the CI check and adds packaging:
 - `Set image tag` creates one simple date-plus-run-id tag for this workflow run
 - `Build Docker image with docker build` creates the package
 - `Save Docker image as artifact file` turns the image into a saved file
+- `Save image metadata` records the exact image reference for later delivery
 - `Upload build artifact` stores that file for later use
 
 ## Step 1: Read the Workflow File
@@ -43,6 +44,7 @@ You should be able to find:
 - the image tag step
 - the Docker build step
 - the artifact upload step
+- the metadata step
 
 ## Step 2: Read the Main Docker Command
 
@@ -120,6 +122,7 @@ You should see steps like:
 - `Set image tag`
 - `Build Docker image with docker build`
 - `Save Docker image as artifact file`
+- `Save image metadata`
 - `Upload build artifact`
 
 ## Step 5: Find the Artifact
@@ -132,7 +135,10 @@ You should see an artifact named:
 
 You do not need to inspect the file contents for this lab.
 
-The important point is that the workflow produced a packaged output and saved it.
+The important point is that the workflow produced a packaged output and saved:
+
+- the image file itself
+- one tiny metadata file that says which exact image tag was built
 
 ## Step 6: Explain the Story in Your Own Words
 

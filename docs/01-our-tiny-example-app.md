@@ -30,6 +30,14 @@ The app stays tiny, but it now gives us three useful endpoints:
 - environment
 - image tag
 
+The app also includes one small debug switch:
+
+- `FORCE_UNHEALTHY=false` by default
+
+If that value is set to `true`, `/health` returns an unhealthy response on purpose.
+
+That gives the course one safe way to demonstrate smoke-test and deployment-failure behavior without changing the app code permanently.
+
 That is enough for us to practice:
 
 1. writing code

@@ -4,6 +4,11 @@ import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
+def env_flag_is_true(name, default="false"):
+    value = os.getenv(name, default)
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
 def get_runtime_metadata():
     return {
         "environment": os.getenv("APP_ENV", "local"),
@@ -12,12 +17,15 @@ def get_runtime_metadata():
         "deployed_at": os.getenv("DEPLOYED_AT", "unknown"),
         "image_tag": os.getenv("IMAGE_TAG", "unknown"),
         "deployment_mode": os.getenv("DEPLOY_MODE", "local-direct"),
+        "force_unhealthy": env_flag_is_true("FORCE_UNHEALTHY"),
         "hostname": socket.gethostname(),
     }
 
 
 def route_request(path):
     if path == "/health":
+        if env_flag_is_true("FORCE_UNHEALTHY"):
+            return 503, {"status": "unhealthy", "reason": "FORCE_UNHEALTHY is enabled"}
         return 200, {"status": "ok"}
 
     if path == "/version":

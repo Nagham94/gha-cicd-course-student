@@ -100,6 +100,34 @@ By the end of Day 2, students should understand:
 - why we want to deploy the exact package we already verified
 - how build and deploy workflows connect together
 
+## Later Assessment Extension
+
+The main course story is complete after the core Day 2 path.
+
+That core path is:
+
+1. `LAB-01`
+2. `LAB-02`
+3. `LAB-03`
+4. `LAB-04`
+5. `LAB-05`
+
+After that, the course can extend in two different ways:
+
+- `LAB-06` is an optional fuller containerized example
+- `LAB-07` and `EX-11` are the later Ubuntu VM assessment path
+
+That later assessment path is not a different story.
+
+It is the same story with a more realistic delivery target:
+
+- verify the change
+- package one traceable image
+- deliver that same image to one Ubuntu VM
+- validate what is running
+
+Use the assessment path only after the main Day 2 flow is already stable.
+
 ## What Success Looks Like
 
 By the end of the course, students should be able to say:

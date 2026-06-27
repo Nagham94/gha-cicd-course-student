@@ -139,13 +139,14 @@ If it fails, also use:
 - [Final Assessment Support Overview](../assessment/README.md)
 - [Prepare the Ubuntu VM](../assessment/02-prepare-ubuntu-vm.md)
 - [Configure Docker Hub, SSH, and GitHub Secrets](../assessment/03-configure-secrets-and-ssh.md)
-- [LAB-07: Final Assessment Setup and Validation Prep](../labs/LAB-07-docker-hub-vm-deploy.md)
+- [LAB-07: Final Assessment Setup and Validation Prep](../../labs/LAB-07-docker-hub-vm-deploy.md)
+- [Assessment Success Criteria, Validation, and Rubric](../assessment/05-success-criteria-and-rubric.md)
 
 ## The EX-11 Final Assessment Workflow Failed
 
 If you are already in the assessed exercise, start with the same checks above and then continue with:
 
-- [EX-11: Final Deployment Assessment](../exercises/EX-11-final-deployment-assessment.md)
+- [EX-11: Final Deployment Assessment](../../exercises/EX-11-final-deployment-assessment.md)
 
 ## I Accidentally Ran an Optional Workflow
 

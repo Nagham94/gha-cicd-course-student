@@ -66,6 +66,8 @@ Use a public VM host value here, because the workflow validates the deployed app
 
 ## Quick Local Check
 
+These commands run from your own machine, not inside the GitHub browser.
+
 Before you run the workflow, check SSH once from your machine:
 
 ```bash
@@ -105,3 +107,10 @@ This setup gives the workflow exactly what it needs:
 - registry access to push the image
 - SSH access to reach the VM
 - one clear remote target for deployment
+
+## Next Step
+
+After this page, continue with:
+
+1. [LAB-07: Final Assessment Setup and Validation Prep](../../labs/LAB-07-docker-hub-vm-deploy.md)
+2. [Assessment Success Criteria, Validation, and Rubric](05-success-criteria-and-rubric.md)

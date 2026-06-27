@@ -22,6 +22,7 @@ That means:
 
 - we use the built artifact
 - we load the image
+- we read the saved image metadata
 - we run the application
 - we check that it responds correctly
 
@@ -52,8 +53,9 @@ The deploy workflow:
 1. waits for the build workflow to finish successfully
 2. downloads the saved build artifact
 3. loads the Docker image from that artifact
-4. runs the application as a container
-5. checks `/health`
+4. reads the saved image reference from the metadata file
+5. runs the application as a container
+6. checks `/health`
 
 ## Why This Workflow Starts Automatically
 

@@ -8,6 +8,8 @@ Use it only when your instructor asks you to prepare the VM-based deployment pat
 
 You do not need this page for the early browser-first labs.
 
+Unlike the early labs, this later setup path uses a local shell on your own machine.
+
 ## When To Use This
 
 Use this page:
@@ -26,7 +28,23 @@ Do not use this page:
 
 The script lives here:
 
-`scripts/install-assessment-deps.sh`
+- [scripts/install-assessment-deps.sh](../../scripts/install-assessment-deps.sh)
+
+## Before You Run These Commands
+
+For this later assessment path, you need:
+
+- a local terminal on your machine
+- a local copy of your repository, or at least a local copy of `scripts/install-assessment-deps.sh`
+
+If you do not have the repository on your machine yet, use one simple path now:
+
+- clone the repository if you already know basic Git
+- or download the repository ZIP from GitHub and extract it
+
+The early labs stay browser-first.
+
+This later assessment setup is the point where local shell commands become necessary.
 
 This page gives you the first commands and the timing for that script.
 
@@ -162,3 +180,4 @@ After this page, continue with:
 1. [Prepare the Ubuntu VM](../assessment/02-prepare-ubuntu-vm.md)
 2. [Configure Docker Hub, SSH, and GitHub Secrets](../assessment/03-configure-secrets-and-ssh.md)
 3. [LAB-07: Final Assessment Setup and Validation Prep](../../labs/LAB-07-docker-hub-vm-deploy.md)
+4. [Assessment Success Criteria, Validation, and Rubric](../assessment/05-success-criteria-and-rubric.md)

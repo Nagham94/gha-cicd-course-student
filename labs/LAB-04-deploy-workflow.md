@@ -26,7 +26,7 @@ This workflow teaches delivery using the package created earlier:
 - `workflow_run` starts deploy after the build workflow finishes
 - `Download build artifact` gets the saved package
 - `Load Docker image` restores that package as an image
-- `Recreate image tag from build run` rebuilds the same date-plus-run-id tag
+- `Read image metadata from build artifact` reads the exact image reference from the build run
 - `Start container` runs the exact same tagged image from the build run
 - `Smoke test deployed app` checks that the app responds
 
@@ -38,6 +38,7 @@ You should be able to find:
 
 - the trigger based on the build workflow
 - the artifact download step
+- the image metadata step
 - the smoke test step
 
 ## Step 2: Start the Build Workflow
@@ -68,7 +69,7 @@ Look for these steps:
 
 - `Download build artifact`
 - `Load Docker image`
-- `Recreate image tag from build run`
+- `Read image metadata from build artifact`
 - `Start container`
 - `Smoke test deployed app`
 
@@ -88,10 +89,9 @@ It is not rebuilding the app.
 
 It is loading and running the same tagged image that the build workflow already created.
 
-In this course, that tag is based on:
+In this course, the build workflow now saves that exact image reference inside the artifact bundle.
 
-- the build date
-- the GitHub run ID
+That means deploy does not need to guess or rebuild the tag.
 
 That is the delivery idea we wanted to reach in this course.
 
@@ -131,6 +131,24 @@ After the lab, try to answer these questions:
 - Why is it useful to deploy the saved artifact?
 - What problem does the smoke test help us catch?
 - How is this different from testing source code only?
+
+## Optional Debug Switch
+
+Keep the normal default behavior for this lab:
+
+- `FORCE_UNHEALTHY` stays false by default
+
+If your instructor wants to demonstrate a controlled smoke-test failure, you can temporarily reconfigure the `Start container` step to pass:
+
+```bash
+-e FORCE_UNHEALTHY=true
+```
+
+inside the `docker run` command.
+
+That makes `/health` fail on purpose.
+
+After the demo, remove that line or set it back to false so the workflow returns to the normal healthy path.
 
 ## Exercises After Lab 04
 

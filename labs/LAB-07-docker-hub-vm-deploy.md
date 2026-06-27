@@ -58,6 +58,12 @@ You should also already have:
 - one Ubuntu VM reachable on port `8000`
 - one public Docker Hub repository named `tiny-health-app`
 
+Important:
+
+This later assessment-prep lab is no longer browser-only.
+
+You now need a local shell on your own machine because you will use `scp`, `ssh`, and the local validation helper.
+
 ## Step 1: Read the Workflow Shape
 
 Before you run anything, find these jobs:
@@ -198,4 +204,5 @@ After the lab, try to answer these questions:
 
 After this prep lab, continue with:
 
+- [Assessment Success Criteria, Validation, and Rubric](../docs/assessment/05-success-criteria-and-rubric.md)
 - [EX-11: Final Deployment Assessment](../exercises/EX-11-final-deployment-assessment.md)

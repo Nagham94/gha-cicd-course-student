@@ -12,6 +12,7 @@ on:
 env:
   IMAGE_NAME: tiny-health-app
   IMAGE_TAR: tiny-health-app.tar
+  IMAGE_METADATA: image-metadata.env
   ARTIFACT_NAME: tiny-health-app-image
   CONTAINER_NAME: tiny-health-container
   APP_PORT: "8000"
@@ -47,13 +48,17 @@ jobs:
         # Turn the saved artifact file back into a Docker image.
         run: docker load --input "downloaded-artifact/${IMAGE_TAR}"
 
-      - name: Recreate image tag from build run
-        # Rebuild the same date-plus-run-id tag the build workflow created.
-        id: image-tag
+      - name: Read image metadata from build artifact
+        # Read the exact built image reference that the build workflow saved.
+        id: image-metadata
         run: |
-          BUILD_DATE="$(echo "${{ github.event.workflow_run.created_at }}" | cut -dT -f1)"
-          IMAGE_TAG="${BUILD_DATE}-${{ github.event.workflow_run.id }}"
-          echo "image_tag=$IMAGE_TAG" >> "$GITHUB_OUTPUT"
+          source "downloaded-artifact/${IMAGE_METADATA}"
+          echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "image_reference=${IMAGE_REFERENCE}" >> "$GITHUB_OUTPUT"
+
+      - name: Show exact image reference
+        # Visibility step so students can see what exact package is being delivered.
+        run: echo "Deploying ${{ steps.image-metadata.outputs.image_reference }}"
 
       - name: Start container
         # Start the exact same tagged image that the build workflow created.
@@ -61,7 +66,7 @@ jobs:
           docker run -d \
             --name "${CONTAINER_NAME}" \
             -p "${APP_PORT}:8000" \
-            "${IMAGE_NAME}:${{ steps.image-tag.outputs.image_tag }}"
+            "${{ steps.image-metadata.outputs.image_reference }}"
 
       - name: Smoke test deployed app
         # Retry a few times because app startup can take a moment.

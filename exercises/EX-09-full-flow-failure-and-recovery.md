@@ -34,6 +34,12 @@ Safe example:
 
 change the health payload from `ok` to another word, then change it back.
 
+Optional safer alternative:
+
+temporarily set `FORCE_UNHEALTHY=true` in the deploy container run path if your instructor wants a controlled deployment-side failure instead of a code-level failure.
+
+For the main version of this exercise, keep the simpler code-level CI failure example first.
+
 ## Acceptance Criteria
 
 - `02 CI Workflow` fails after the breaking change.

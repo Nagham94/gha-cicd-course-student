@@ -38,19 +38,19 @@ This setup keeps the deployment target real enough to matter, but still simple e
 - one lab readiness workflow
 - one student-built final assessment workflow
 - the same app you already used in the earlier labs
-
 - one small Docker image
-- one Ubuntu VM with Docker installed
 - one Docker Hub account and access token
+
+Unlike the early browser-first labs, this later path also uses a local shell on your machine for `scp`, `ssh`, and the local deployment validation command.
 
 ## Support Scripts
 
 This assessment support set also includes small support scripts:
 
-- `scripts/install-assessment-deps.sh` is the main install-and-check script for Ubuntu VMs and local Ubuntu checks
-- `scripts/assessment/prepare-ubuntu-vm.sh` is a focused wrapper for VM preparation
-- `scripts/assessment/prepare-local-machine.sh` is a quick local helper that defaults to a check-only pass
-- `scripts/assessment/validate-deployment.sh` checks `/health`, `/version`, and `/status` after deployment
+- [scripts/install-assessment-deps.sh](../../scripts/install-assessment-deps.sh) is the main install-and-check script for Ubuntu VMs and local Ubuntu checks
+- [scripts/assessment/prepare-ubuntu-vm.sh](../../scripts/assessment/prepare-ubuntu-vm.sh) is a focused wrapper for VM preparation
+- [scripts/assessment/prepare-local-machine.sh](../../scripts/assessment/prepare-local-machine.sh) is a quick local helper that defaults to a check-only pass
+- [scripts/assessment/validate-deployment.sh](../../scripts/assessment/validate-deployment.sh) checks `/health`, `/version`, and `/status` after deployment
 
 Use them to reduce setup friction and to validate the deployed app clearly.
 
@@ -66,8 +66,10 @@ If you want the full script guidance first, open:
 4. [Configure Docker Hub, SSH, and GitHub Secrets](03-configure-secrets-and-ssh.md)
 5. [How the Current Labs Prepare You](04-how-current-labs-prepare-you.md)
 6. [LAB-07: Final Assessment Setup and Validation Prep](../../labs/LAB-07-docker-hub-vm-deploy.md)
-7. [EX-11: Final Deployment Assessment](../../exercises/EX-11-final-deployment-assessment.md)
-8. [Assessment Success Criteria and Rubric](05-success-criteria-and-rubric.md)
+7. [Assessment Success Criteria, Validation, and Rubric](05-success-criteria-and-rubric.md)
+8. [EX-11: Final Deployment Assessment](../../exercises/EX-11-final-deployment-assessment.md)
+
+The final validation command and self-check now live in the rubric page so you have one final assessment reference instead of two.
 
 ## One Important Note
 
