@@ -1,5 +1,5 @@
 # LAB-03: Build Artifact Workflow
-
+ 
 ## Goal
 
 Your goal is to see the application packaged as a build artifact.
