@@ -11,6 +11,9 @@ on:
       - ".github/workflows/02-ci.yml"
   # Allow a safe manual run before students trigger it with a code change.
   workflow_dispatch:
+  # This cron expression runs every day at 09:00 UTC.
+  schedule:
+    - cron: "0 9 * * *"
 
 jobs:
   run-tests:
@@ -22,11 +25,20 @@ jobs:
         # Download the repository contents onto the runner.
         uses: actions/checkout@v6
 
+      - name: Show repository files
+        run: ls -la
+
       - name: Set up Python
         # Prepare Python on the runner. This does not change the student laptop.
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+
+      - name: Show Python version
+        run: python --version
+
+      - name: Show runner time
+        run: date
 
       - name: Run tests
         # This is the key verification step in the CI workflow.

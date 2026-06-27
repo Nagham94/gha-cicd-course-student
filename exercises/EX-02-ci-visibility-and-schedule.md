@@ -1,5 +1,5 @@
 # EX-02: CI Visibility and Schedule
-
+ 
 ## Use This After
 
 - [LAB-02: Real CI Workflow](../labs/LAB-02-real-ci-workflow.md)
