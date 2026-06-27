@@ -14,6 +14,12 @@ on:
   # This cron expression runs every day at 09:00 UTC.
   schedule:
     - cron: "0 9 * * *"
+  # CI Trigger on Pull Requests
+  pull_request:
+  types:
+    - opened
+    - reopened
+    - synchronize
 
 jobs:
   prepare-matrix:
@@ -45,6 +51,18 @@ jobs:
       - name: Show repository files
         run: ls -la
 
+      - name: Run Trivy Filesystem Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
+
+      - name: Run Trivy Dockerfile Scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: config
+          scan-ref: .
+
       - name: Set up Python
         # Prepare Python on the runner. This does not change the student laptop.
         uses: actions/setup-python@v6
@@ -55,6 +73,12 @@ jobs:
         run: |
           echo "Matrix Python Version: ${{ matrix.python-version }}"
           python --version
+
+      - name: Install Ruff
+        run: pip install ruff
+
+      - name: Run Ruff
+        run: ruff check .
 
       - name: Show runner time
         run: date
