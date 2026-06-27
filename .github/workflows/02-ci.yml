@@ -16,12 +16,26 @@ on:
     - cron: "0 9 * * *"
 
 jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+
+    outputs:
+      python_versions: ${{ steps.matrix.outputs.python_versions }}
+
+    steps:
+      - name: Read matrix secret
+        id: matrix
+        run: |
+          echo "python_versions=${{ secrets.PYTHON_MATRIX }}" >> "$GITHUB_OUTPUT"
+
   run-tests:
+    # Wait for the prepare job to publish the matrix.
+    needs: prepare-matrix
     # The runner is the temporary machine that executes the steps below.
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ${{ fromJSON(needs.prepare-matrix.outputs.python_versions) }}
 
     steps:
       - name: Check out repository
