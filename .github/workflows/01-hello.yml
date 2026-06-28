@@ -1,9 +1,6 @@
 # This first workflow is intentionally tiny.
 # It helps students see what a GitHub Actions run looks like.
-name: 01 Hello Workflow
-
-on:
-  # Run automatically when this workflow file  pull_request:
+name: 01 Hello Workfl# Run automatically when this workflow file  pull_request:
     branches:
       - main
     types:
