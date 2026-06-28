@@ -84,4 +84,4 @@ jobs:
       - name: Stop container
         if: always()
         # Clean up even if an earlier step fails.
-        run: docker rm -f "${CONTAINER_NAME}" || true
+        run: docker rm -f "${CONTAINER_NAME}" || true 
