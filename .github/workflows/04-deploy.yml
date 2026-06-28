@@ -56,6 +56,11 @@ jobs:
           echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
           echo "image_reference=${IMAGE_REFERENCE}" >> "$GITHUB_OUTPUT"
 
+      - name: Show deployed image reference
+        run: |
+          echo "Image Reference:"
+          echo "${IMAGE_REFERENCE}"
+
       - name: Show exact image reference
         # Visibility step so students can see what exact package is being delivered.
         run: echo "Deploying ${{ steps.image-metadata.outputs.image_reference }}"
@@ -67,6 +72,9 @@ jobs:
             --name "${CONTAINER_NAME}" \
             -p "${APP_PORT}:8000" \
             "${{ steps.image-metadata.outputs.image_reference }}"
+
+      - name: Show running containers
+        run: docker ps
 
       - name: Smoke test deployed app
         # Retry a few times because app startup can take a moment.
@@ -81,7 +89,12 @@ jobs:
           echo "App did not become ready in time."
           exit 1
 
+      - name: Show /health response
+        run: |
+          echo "Health endpoint response:"
+          curl http://127.0.0.1:8000/health
+
       - name: Stop container
         if: always()
         # Clean up even if an earlier step fails.
-        run: docker rm -f "${CONTAINER_NAME}" || true
+        run: docker rm -f "${CONTAINER_NAME}" || true 

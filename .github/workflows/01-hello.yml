@@ -1,10 +1,6 @@
 # This first workflow is intentionally tiny.
 # It helps students see what a GitHub Actions run looks like.
-name: 01 Hello Workflow
-
-on:
-  # Run automatically when this workflow file changes.
-  pull_request:
+name: 01 Hello Workfl# Run automatically when this workflow file  pull_request:
     branches:
       - main
     types:
@@ -15,7 +11,7 @@ on:
 jobs:
   say-hello:
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
-    # GitHub provides a fresh runner for the job.
+    # GitHub provides a fresh runner for the job
     runs-on: ubuntu-latest
 
     steps:

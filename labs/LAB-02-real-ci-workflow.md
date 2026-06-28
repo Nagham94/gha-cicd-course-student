@@ -136,7 +136,7 @@ After the lab is complete, continue with these exercises in order:
 3. [EX-04: CI Secrets and Matrix Patterns](../exercises/EX-04-ci-secrets-and-matrix.md)
 
 These exercises extend the same CI story in three different ways:
-
+ 
 - `EX-02` adds visibility and schedule
 - `EX-03` adds matrix
 - `EX-04` adds advanced secrets and matrix patterns
