@@ -11,7 +11,7 @@ on:
 
 env:
   IMAGE_NAME: tiny-health-app
-  IMAGE_TAR: tiny-health-app.tar
+  IMAGE_TAR: tiny-health-app-3.12.tar
   IMAGE_METADATA: image-metadata.env
   ARTIFACT_NAME: tiny-health-app-image-py3.12
   CONTAINER_NAME: tiny-health-container
