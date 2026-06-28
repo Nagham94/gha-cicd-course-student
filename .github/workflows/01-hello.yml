@@ -3,8 +3,7 @@
 name: 01 Hello Workflow
 
 on:
-  # Run automatically when this workflow file changes.
-  pull_request:
+  # Run automatically when this workflow file  pull_request:
     branches:
       - main
     types:
