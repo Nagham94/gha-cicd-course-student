@@ -10,11 +10,11 @@ on:
     types: [completed]
 
 env:
-  IMAGE_NAME: tiny-health-app
-  IMAGE_TAR: tiny-health-app-3.12.tar
-  IMAGE_METADATA: image-metadata.env
   ARTIFACT_NAME: tiny-health-app-image-py3.12
+  IMAGE_TAR: tiny-health-app-3.12.tar
+  IMAGE_METADATA: image-metadata-3.12.env
   CONTAINER_NAME: tiny-health-container
+  IMAGE_NAME: tiny-health-app
   APP_PORT: "8000"
 
 permissions:
